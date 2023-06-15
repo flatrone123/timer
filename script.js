@@ -2,58 +2,66 @@ let startDay = document.querySelector('.start-date').value;
 let endDay = document.querySelector('.end-date').value;
 let left = new Date(endDay) - new Date();
 
+function foo() {
+    let month = document.querySelector('.mo');
+    let day = document.querySelector('.d');
+    let hour = document.querySelector('.h');
 
+    let m = Math.floor(left / 1000 / 60 / 60 / 24 / 30);
+    let d = Math.floor(left / 1000 / 60 / 60 / 24 % 30);;
+    let h = Math.floor(left / 1000 / 60 / 60 % 24);; 
+    let min = Math.floor(left / 1000 / 60 % 60);
+    let sec = left % 60;
 
-function setMonth() {
-    let d = left / 1000 / 60 / 60 / 24;
-    let m;
-    for (let i = 0; d > 30; d -= 30, i++) {
-        m = i;
-    }
-    console.log(d, m);
+    sec = sec < 10 ? '0' + sec : sec;
+    min = min < 10 ? '0' + min : min;
+    h = h < 10 ? '0' + h : h;
+    d = d < 10 ? '0' + d : d;
 
-    let month = document.querySelector('.mo')
-    month.textContent = m+1;
+    month.textContent = m;
+    day.textContent = d;
+    hour.innerHTML = `${h}:${min}:${sec}`;
 
-    let day = document.querySelector('.d')
-    day.textContent = Math.floor(d);
+    left--;
 }
-setMonth();
+
+setInterval(foo, 1000);
+
+
 
 drowDays();
-setInterval(timer, 1000);
 
-function timer() {
-    let sec = document.querySelector('.s');
-    let min = document.querySelector('.m');
-    let hour = document.querySelector('.h');
-    let day = document.querySelector('.d')
-    let month = document.querySelector('.mo')
-
+// function timer() {
+//     let sec = document.querySelector('.s');
+//     let min = document.querySelector('.m');
+//     let hour = document.querySelector('.h');
+//     let day = document.querySelector('.d')
+//     let month = document.querySelector('.mo')
 
 
-    if (sec.textContent == 0) {
-        if (min.textContent == 0) {
-            if (hour.textContent == 0) {
-                if (day.textContent == 0) {
-                    if (month.textContent == 0) {
-                        // "Действуй чувак"
-                    }
-                    month.textContent--;
-                    day.textContent = 30;
-                }
-                day.textContent--;
-                hour.textContent = 24;
-            }
-            hour.textContent--;
-            min.textContent = 60;
-        }
-        min.textContent--;
-        sec.textContent = 60;
-    } 
+
+//     if (sec.textContent == 0) {
+//         if (min.textContent == 0) {
+//             if (hour.textContent == 0) {
+//                 if (day.textContent == 0) {
+//                     if (month.textContent == 0) {
+//                         // "Действуй чувак"
+//                     }
+//                     month.textContent--;
+//                     day.textContent = 30;
+//                 }
+//                 day.textContent--;
+//                 hour.textContent = 24;
+//             }
+//             hour.textContent--;
+//             min.textContent = 60;
+//         }
+//         min.textContent--;
+//         sec.textContent = 60;
+//     } 
     
-    sec.textContent--
-}
+//     sec.textContent--
+// }
 
 function drowDays() {
     let days = document.querySelector('.daysMatrix');

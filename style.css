@@ -11,16 +11,23 @@
 }
 .time > div {
   width: 82px;
+  font-size: 40px;
 }
 .time > div h1 {
   text-align: center;
-  font-size: 16px;
+  font-size: 32px;
 }
 .time > div div {
   text-align: center;
 }
 
+.h {
+  text-align: center;
+  font-size: 40px;
+}
+
 .daysMatrix {
+  margin: auto;
   width: 400px;
   display: flex;
   justify-content: space-between;
